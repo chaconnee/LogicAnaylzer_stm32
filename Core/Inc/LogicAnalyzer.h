@@ -2,7 +2,7 @@
 /**
   ******************************************************************************
   * @file    LogicAnalyzer.h
-  * @brief   逻辑分析仪命令与CDC打包（面向过程）
+  * @brief   ???????????????CDC?????????????
   ******************************************************************************
   */
 /* USER CODE END Header */
@@ -22,7 +22,8 @@ extern "C" {
 typedef enum {
     LOGIC_ANALYZER_MODE_IDLE = 0U,
     LOGIC_ANALYZER_MODE_STREAM_500K = 1U,
-    LOGIC_ANALYZER_MODE_STREAM_1M = 2U
+    LOGIC_ANALYZER_MODE_STREAM_1M = 2U,
+    LOGIC_ANALYZER_MODE_STREAM_10K = 3U
 } MODE;
 
 void LogicAnalyzer_Init(void);

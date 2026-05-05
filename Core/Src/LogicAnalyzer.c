@@ -75,6 +75,11 @@ void LogicAnalyzer_ProcessByte(uint8_t rxByte)
                 s_mode = LOGIC_ANALYZER_MODE_STREAM_1M;
                 s_frameSequence = 0U;
             }
+            else if (cmd == 4U)
+            {
+                s_mode = LOGIC_ANALYZER_MODE_STREAM_10K;
+                s_frameSequence = 0U;
+            }
         }
 
         s_cmdLength = 0U;
@@ -140,6 +145,11 @@ uint32_t LogicAnalyzer_GetRateForMode(MODE mode)
     if (mode == LOGIC_ANALYZER_MODE_STREAM_1M)
     {
         return LA_RATE_1M_HZ;
+    }
+
+    if (mode == LOGIC_ANALYZER_MODE_STREAM_10K)
+    {
+        return LA_RATE_10K_HZ;
     }
 
     return LA_RATE_500K_HZ;
@@ -215,6 +225,11 @@ static uint8_t LogicAnalyzer_ParseCommand(const uint8_t* buffer, uint8_t length)
         return 3U;
     }
 
+    if ((length == 1U) && (buffer[0] == '4'))
+    {
+        return 4U;
+    }
+
     if (LogicAnalyzer_StringEqualsIgnoreCase(buffer, length, "start") != 0U)
     {
         return 1U;
@@ -230,6 +245,12 @@ static uint8_t LogicAnalyzer_ParseCommand(const uint8_t* buffer, uint8_t length)
         (LogicAnalyzer_StringEqualsIgnoreCase(buffer, length, "fast") != 0U))
     {
         return 3U;
+    }
+
+    if ((LogicAnalyzer_StringEqualsIgnoreCase(buffer, length, "low") != 0U) ||
+        (LogicAnalyzer_StringEqualsIgnoreCase(buffer, length, "10k") != 0U))
+    {
+        return 4U;
     }
 
     return 0U;
@@ -281,7 +302,7 @@ static uint16_t LogicAnalyzer_BuildAndSendPacket(const volatile uint16_t* sample
 
     for (i = 0U; i < sampleCount; i++)
     {
-        /* DMA以halfword(16bit)读取GPIOA->IDR, 但只需PA0-PA7低8位, 屏蔽高8位 */
+        /* DMA??halfword(16bit)???GPIOA->IDR, ?????PA0-PA7??8??, ??????8?? */
         uint8_t sample = (uint8_t)(samples[i] & 0xFFU);
         s_txBuffer[idx++] = sample;
         checksum ^= sample;

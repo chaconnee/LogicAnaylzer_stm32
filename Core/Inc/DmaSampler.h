@@ -2,7 +2,7 @@
 /**
   ******************************************************************************
   * @file    DmaSampler.h
-  * @brief   8通道GPIO DMA采样（面向过程）
+  * @brief   8???GPIO DMA??????????????
   ******************************************************************************
   */
 /* USER CODE END Header */
@@ -16,7 +16,8 @@ extern "C" {
 
 #include "main.h"
 
-#define DMA_SAMPLER_BUFFER_SIZE  4096U
+#define DMA_SAMPLER_BUFFER_SIZE  4078U
+#define LA_RATE_10K_HZ           10000U
 #define LA_RATE_500K_HZ          500000U
 #define LA_RATE_1M_HZ            1000000U
 

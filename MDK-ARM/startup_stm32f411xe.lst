@@ -745,9 +745,9 @@ ARM Macro Assembler    Page 12
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
 interwork --depend=logicanalyzer\startup_stm32f411xe.d -ologicanalyzer\startup_
 stm32f411xe.o -I.\RTE\_LogicAnalyzer -IC:\Users\chaconne\AppData\Local\Arm\Pack
-s\ARM\CMSIS\6.2.0\CMSIS\Core\Include --predefine="__UVISION_VERSION SETA 543" -
--predefine="STM32F411xE SETA 1" --predefine="_RTE_ SETA 1" --list=startup_stm32
-f411xe.lst startup_stm32f411xe.s
+s\ARM\CMSIS\6.2.0\CMSIS\Core\Include --predefine="__UVISION_VERSION SETA 538" -
+-predefine="_RTE_ SETA 1" --predefine="STM32F411xE SETA 1" --predefine="_RTE_ S
+ETA 1" --list=startup_stm32f411xe.lst startup_stm32f411xe.s
 
 
 
